@@ -8,8 +8,13 @@ level, and accelerometer readings.
 
 ## Usage
 
-Currently, the library consists of a Python module for controlling
-Lovense toys. If you need an implementation in a language not
+Currently, the library has implementations for controlling
+Lovense toys in the following languages/packages:
+
+- Python
+- Max/MSP
+
+If you need an implementation in a language not
 currently supported by liblovense, please
 [file an issue on the github tracker](http://github.com/metafetish/liblovense/issues).
 
