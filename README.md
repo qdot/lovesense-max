@@ -1,4 +1,4 @@
-# liblovense
+# liblovense-max
 
 liblovense is a library for controlling Lovense sex toys, such as the
 Max, Nora, and Lush. The library allows users to control all aspects
@@ -16,10 +16,11 @@ If you need an implementation in a language not currently supported by
 liblovense, please file an issue on the github tracker of the relevant
 project.
 
-## Python Library
+## Max/MSP Library
 
-All python module code lives in the python/ directory. To install
-the library, use either setup.py or pip.
+Due to the Lovense using serial, liblovense for Max/MSP doesn't
+require any special external. It's just a patch that's ready to insert
+into your patch and go!
 
 ## Protocol Explanation
 
