@@ -1,6 +1,6 @@
-# liblovense-max
+# lovesense-max
 
-liblovense is a library for controlling Lovense sex toys, such as the
+lovesense is a library for controlling Lovense sex toys, such as the
 Max, Nora, and Lush. The library allows users to control all aspects
 of the toy (vibration/rotation/inflation, depending on the toy), as
 well as retrieving information like device type, status, battery
@@ -8,17 +8,17 @@ level, and accelerometer readings.
 
 The library is currently available in the following languages:
 
-- Python 2 (http://github.com/metafetish/liblovense-py)
-- Max/MSP (http://github.com/metafetish/liblovense-max)
-- Rust (with C Headers) (http://github.com/metafetish/liblovense-rs)
+- Python 2 (http://github.com/metafetish/lovesense-py)
+- Max/MSP (http://github.com/metafetish/lovesense-max)
+- Rust (with C Headers) (http://github.com/metafetish/lovesense-rs)
 
 If you need an implementation in a language not currently supported by
-liblovense, please file an issue on the github tracker of the relevant
+lovesense, please file an issue on the github tracker of the relevant
 project.
 
 ## Max/MSP Library
 
-Due to the Lovense using serial, liblovense for Max/MSP doesn't
+Due to the Lovense using serial, lovesense for Max/MSP doesn't
 require any special external. It's just a patch that's ready to insert
 into your patch and go!
 
