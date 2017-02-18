@@ -27,61 +27,38 @@ If you require commercial support for programming for Lovense
 products, it is recommended you go through the
 [Official Lovense Developer Program](https://www.lovense.com/sextoys/developer).
 
-## Max/MSP Library
+## Max/MSP subpatcher
 
-Due to the Lovense using serial, lovesense for Max/MSP doesn't
+The Max/MSP subpatcher currently only supports the Max and Nora toys
+from Lovense. These were the only toys released that supported
+dual-band bluetooth access, meaning that bluetooth 2.0 SPP
+communication was possible.
+
+Assuming you have either of those toys, lovesense for Max/MSP doesn't
 require any special external. It's just a patch that's ready to insert
 into your patch and go!
 
 ## Protocol Explanation
 
-Lovense toys connect via bluetooth, and then use the Serial Port
-Profile (SPP) to communicate with the host. This means that the toys
-are exposed as either COM Ports (windows) or tty devices
-(posix/bsd/etc). 
+Protocol documentation is available
+at
+[the lovesense-docs site on readthedocs.org](https://lovesense-docs.readthedocs.org/).
 
-### Protocol Rules
-
-* Commands and replies are strings, using semicolons to mark their end.
-* All commands start with a command identifier word, then possibly
-  either specifiers or levels, delimited by colons. e.g. "Vibrate:5;"
-  would set vibration to 5.
-* Replies are in the context of the command (i.e. sending "Battery;"
-  will just return a number, like "85;"), but can still be colon
-  delimited lists.
-
-### Command Table
-
-The following is the known command table for all toys. Anything send
-or received over the serial port is in quotes to denote communication,
-but should not be sent using quotes if you are implementing your own
-version of this protocol. Commands with ":x" mean that the x should be
-replaced with a number, the range of which is mentioned in the
-description.
-
-| Command         | Description                                                                                                         | Expected Return                                                                                      |
-| --------------- | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| "DeviceType;"   | Returns toy type (A: Lush, B: Max, C: Nora), Firmware version, and bluetooth MAC address, as a colon delimited list | String, e.g. "C:11:0082059AD3BD;"                                                                    |
-| "Battery;"      | Returns battery level of toy                                                                                        | Number, e.g. "85;" meaning 85% battery left                                                          |
-| "PowerOff;"     | Powers the device off                                                                                               | "OK;"                                                                                                |
-| "Status:1;"     | Shows device status. 2 is "normal"                                                                                  | "2;"                                                                                                 |
-| "StartMove:1;"  | Starts accelerometer data stream.                                                                                   | String, that always starts with 'G', followed by 3 16-bit little-endian numbers e.g. "GEF008312ED00" |
-| "StopMove:1;"   | Stops accelerometer data stream                                                                                     | "OK;"                                                                                                |
-| "RotateChange;" | Changes the direction of rotation for the stimulator on the Nora toy.                                               | "OK;"                                                                                                |
-| "Vibrate:x;"    | Sets vibration level for toy. Range seems to be 0-20.                                                               | "OK;"                                                                                                |
-| "Rotate:x;"     | Sets rotation speed for Nora toy. Range seems to be 0-20.                                                           | "OK;"                                                                                                |
-| "Air:Level:x;"  | Sets absolute air level for Max toy. Range seems to be 0-5;                                                         | "OK;"                                                                                                |
-| "Air:In:x;"     | Sets relative inflation level, i.e. if currently inflation level is 3, and "Air:In:1" is sent, will inflate to 4    | "OK;"                                                                                                |
-| "Air:Out:x;"    | Sets relative deflation level, i.e. if currently inflation level is 3, and "Air:Out:1" is sent, will inflate to 2   | "OK;"                                                                                                |
-
+The protocol documentation repository is available [at metafetish/lovesense-docs on github](http://github.com/metafetish/lovesense-docs).
 
 ## Thanks
 
 Thanks to [PenTest Partners](https://www.pentestpartners.com/) for
-doing most of the heavy lifting and
-[documenting it in their blog](https://www.pentestpartners.com/blog/dicking-around-with-dildos-how-to-drive-a-vibrator-with-realterm/).
-This library is mostly just an implementation of the information found
-in that post.
+[documenting their initial work in their blog](https://www.pentestpartners.com/blog/dicking-around-with-dildos-how-to-drive-a-vibrator-with-realterm/).
+
+## Disclaimer
+
+The Lovesense project is in no way affiliated with Lovense or any of
+its partners. The documentation and libraries here have been produced
+via clean room reverse engineering methods, and are provided with no
+guarantees, as outlined by the license agreement. Usage of these
+libraries and information is in no way condoned by Lovense and may
+void the warranty of your toy.
 
 ## License
 
