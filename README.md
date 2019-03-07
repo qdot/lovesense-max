@@ -1,4 +1,8 @@
-# lovesense-max
+# lovesense-max - DEPRECATED
+
+**DEPRECATED** - This repo/project is now deprecated and in archive
+mode. All further updates are happening in the Buttplug library at
+[https://buttplug.io](https://buttplug.io).
 
 lovesense is a library for controlling Lovense sex toys, such as the
 Max, Nora, and Lush. The library allows users to control all aspects
